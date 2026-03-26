@@ -608,17 +608,10 @@ export default function App() {
                 <div className="grid lg:grid-cols-12 gap-8 relative z-20">
                   {/* Gubi Hologram Interface */}
                   <div className="lg:col-span-12">
-                    <div className="relative w-full h-[85vh] sm:h-auto sm:aspect-video lg:aspect-[21/9] flex flex-col lg:items-center lg:justify-center overflow-y-auto lg:overflow-visible p-6 sm:p-12 lg:p-20 rounded-3xl sm:rounded-[4rem] bg-slate-950 border-x-4 sm:border-x-8 border-slate-900 shadow-[0_0_150px_rgba(6,182,212,0.2)] group">
+                    <div className="relative w-full aspect-square sm:aspect-video lg:aspect-[21/9] flex flex-col lg:items-center lg:justify-center overflow-y-auto lg:overflow-visible p-6 sm:p-20 rounded-3xl sm:rounded-[4rem] bg-slate-950 border-x-4 sm:border-x-8 border-slate-900 shadow-[0_0_150px_rgba(6,182,212,0.2)] group">
                       {/* Background Grid & Neural Network Effect */}
                       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #22d3ee 1px, transparent 0)', backgroundSize: '30px 30px' }}></div>
                       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
-                      
-                      {/* Scanning Line Effect */}
-                      <motion.div 
-                        animate={{ top: ["0%", "100%"] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                        className="absolute left-0 right-0 h-px bg-cyan-500/20 shadow-[0_0_15px_#22d3ee] z-10 pointer-events-none"
-                      ></motion.div>
                       
                       {/* GUBI Watermark */}
                       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
@@ -653,25 +646,25 @@ export default function App() {
                       </div>
 
                       {/* Central Gubi AI Entity */}
-                      <div className="relative z-30 flex flex-col items-center mb-16 lg:mb-0 shrink-0">
+                      <div className="relative z-30 flex flex-col items-center mb-12 lg:mb-0">
                         <motion.div 
                           animate={{ 
-                            y: [0, -10, 0],
-                            scale: [1, 1.01, 1],
+                            y: [0, -25, 0],
+                            scale: [1, 1.05, 1],
                           }}
-                          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                           className="relative"
                         >
-                          {/* Outer Energy Rings - More Subtle & Professional */}
+                          {/* Outer Energy Rings */}
                           <motion.div 
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                            className="absolute -inset-12 sm:-inset-16 border border-cyan-500/10 rounded-full"
+                            animate={{ rotate: 360, scale: [1, 1.1, 1] }}
+                            transition={{ rotate: { duration: 10, repeat: Infinity, ease: "linear" }, scale: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}
+                            className="absolute -inset-12 border-2 border-cyan-400/20 rounded-full border-t-transparent border-b-transparent"
                           ></motion.div>
                           <motion.div 
-                            animate={{ rotate: -360 }}
-                            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                            className="absolute -inset-20 sm:-inset-24 border border-blue-500/5 rounded-full border-dashed"
+                            animate={{ rotate: -360, scale: [1, 1.2, 1] }}
+                            transition={{ rotate: { duration: 15, repeat: Infinity, ease: "linear" }, scale: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
+                            className="absolute -inset-20 border border-blue-400/10 rounded-full border-l-transparent border-r-transparent"
                           ></motion.div>
 
                           {/* Floating Gubi Companion Orb */}
@@ -686,7 +679,7 @@ export default function App() {
                               x: { duration: 4, repeat: Infinity, ease: "easeInOut" },
                               y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                             }}
-                            className="absolute z-40 hidden lg:block"
+                            className="absolute z-40"
                           >
                             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 shadow-[0_0_20px_#22d3ee] flex items-center justify-center p-1">
                               <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
@@ -696,8 +689,8 @@ export default function App() {
                           </motion.div>
 
                           {/* The Gubi Core */}
-                          <div className="relative w-48 h-48 sm:w-72 sm:h-72 rounded-full p-1.5 bg-gradient-to-tr from-cyan-500/50 via-blue-500/50 to-cyan-500/50 shadow-[0_0_80px_rgba(6,182,212,0.3)]">
-                            <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 relative border-4 border-slate-950">
+                          <div className="relative w-48 h-48 sm:w-72 sm:h-72 rounded-full p-1 bg-gradient-to-tr from-cyan-500 to-blue-500 shadow-[0_0_60px_rgba(6,182,212,0.5)]">
+                            <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 relative">
                               <img 
                                 src="https://i.imgur.com/VXJPAMV.jpeg" 
                                 alt="Gubi AI Entity" 
@@ -706,18 +699,18 @@ export default function App() {
                               />
                               {/* Glitch & Hologram Overlay */}
                               <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.03),rgba(0,255,0,0.01),rgba(0,0,255,0.03))] bg-[length:100%_4px,4px_100%]"></div>
-                              <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 via-transparent to-transparent"></div>
+                              <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/30 via-transparent to-transparent"></div>
                             </div>
                           </div>
 
                           {/* Floating Status Tags around Core */}
                           <motion.div 
-                            animate={{ x: [0, 5, 0], y: [0, -5, 0] }}
+                            animate={{ x: [0, 10, 0], y: [0, -10, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-4 -right-8 sm:-top-10 sm:-right-20 bg-slate-900/80 backdrop-blur-md border border-cyan-500/30 px-3 py-1 rounded-full flex items-center gap-2 z-50"
+                            className="absolute -top-10 -right-20 bg-cyan-500/10 backdrop-blur-md border border-cyan-500/30 px-3 py-1 rounded-full flex items-center gap-2"
                           >
                             <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></div>
-                            <span className="text-[8px] sm:text-[9px] font-black text-cyan-400 uppercase tracking-widest">Neural_Link: Active</span>
+                            <span className="text-[9px] font-black text-cyan-400 uppercase tracking-widest">Neural_Link: Stable</span>
                           </motion.div>
                         </motion.div>
 
@@ -726,29 +719,21 @@ export default function App() {
                           <motion.div 
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="space-y-3"
+                            className="space-y-2"
                           >
-                            <div className="flex flex-col items-center">
-                              <span className="text-[8px] sm:text-[10px] font-mono text-cyan-500 uppercase tracking-[0.5em] mb-2">Autonomous Intelligence</span>
-                              <h3 className="text-3xl sm:text-6xl font-black text-white tracking-tighter italic flex items-center justify-center gap-3 sm:gap-4">
-                                <span className="text-cyan-500 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]">GUBI</span>
-                                <span className="text-slate-700 font-light">/</span>
-                                <span className="text-white">AI CORE</span>
-                              </h3>
-                            </div>
-                            
-                            <div className="flex items-center justify-center gap-3 sm:gap-8 bg-slate-900/50 backdrop-blur-sm px-4 sm:px-6 py-2 rounded-full border border-slate-800/50">
+                            <h3 className="text-3xl sm:text-5xl font-black text-white tracking-tighter italic flex items-center justify-center gap-4">
+                              <span className="text-cyan-500">GUBI</span>
+                              <span className="text-slate-400 opacity-50">/</span>
+                              <span>AI CORE</span>
+                            </h3>
+                            <div className="flex items-center justify-center gap-6">
                               <div className="flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full shadow-[0_0_8px_#22c55e]"></div>
-                                <span className="text-[8px] sm:text-[9px] font-mono text-slate-400 uppercase tracking-widest">Online</span>
+                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.2em]">System_Online</span>
                               </div>
                               <div className="w-px h-3 bg-slate-800"></div>
                               <div className="flex items-center gap-2">
-                                <span className="text-[8px] sm:text-[9px] font-mono text-cyan-500 uppercase tracking-widest">12ms</span>
-                              </div>
-                              <div className="w-px h-3 bg-slate-800"></div>
-                              <div className="flex items-center gap-2">
-                                <span className="text-[8px] sm:text-[9px] font-mono text-blue-400 uppercase tracking-widest">99.9%</span>
+                                <span className="text-[10px] font-mono text-cyan-500 uppercase tracking-[0.2em]">Latency: 14ms</span>
                               </div>
                             </div>
                           </motion.div>
@@ -756,25 +741,25 @@ export default function App() {
                       </div>
 
                       {/* Left Side: Real-time Analytics */}
-                      <div className="lg:absolute lg:left-10 lg:top-1/2 lg:-translate-y-1/2 flex flex-col sm:flex-row lg:flex-col gap-8 mb-12 lg:mb-0 w-full lg:w-auto items-center lg:items-start justify-center z-40">
-                        <div className="space-y-3 w-full max-w-[280px] sm:max-w-none sm:w-auto">
-                          <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] text-center lg:text-left">Biometric_Data</p>
-                          <div className="w-full sm:w-48 h-20 sm:h-24 bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-xl p-3 relative overflow-hidden shadow-inner">
-                            <div className="flex items-end gap-1.5 h-full">
+                      <div className="lg:absolute lg:left-10 lg:top-1/2 lg:-translate-y-1/2 flex flex-row lg:flex-col gap-6 mb-12 lg:mb-0 w-full lg:w-auto justify-around lg:justify-start z-40">
+                        <div className="space-y-2">
+                          <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Biometric_Data</p>
+                          <div className="w-32 sm:w-48 h-16 sm:h-24 bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-xl p-2 sm:p-3 relative overflow-hidden">
+                            <div className="flex items-end gap-1 h-full">
                               {[40, 70, 45, 90, 65, 80, 50, 85, 60, 95].map((h, i) => (
                                 <motion.div 
                                   key={i}
                                   animate={{ height: [`${h}%`, `${h-20}%`, `${h}%`] }}
                                   transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
-                                  className="flex-1 bg-gradient-to-t from-cyan-600/40 to-cyan-400/60 rounded-t-sm"
+                                  className="flex-1 bg-cyan-500/40 rounded-t-sm"
                                 ></motion.div>
                               ))}
                             </div>
                           </div>
                         </div>
-                        <div className="space-y-3 w-full max-w-[280px] sm:max-w-none sm:w-auto">
-                          <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] text-center lg:text-left">Neural_Activity</p>
-                          <div className="flex items-center justify-center lg:justify-start gap-4 bg-slate-900/80 backdrop-blur-md border border-slate-800 p-3 rounded-xl">
+                        <div className="space-y-2">
+                          <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Neural_Activity</p>
+                          <div className="flex items-center gap-3">
                             <div className="w-12 h-12 rounded-full border-2 border-cyan-500/20 flex items-center justify-center relative">
                               <motion.div 
                                 animate={{ rotate: 360 }}
@@ -784,8 +769,8 @@ export default function App() {
                               <span className="text-[10px] font-bold text-cyan-400">88%</span>
                             </div>
                             <div>
-                              <p className="text-[10px] font-bold text-white tracking-tight">SYNC_LEVEL</p>
-                              <p className="text-[9px] text-slate-500 font-mono">Optimizing...</p>
+                              <p className="text-[10px] font-bold text-white">SYNC_LEVEL</p>
+                              <p className="text-[9px] text-slate-500">Optimizing...</p>
                             </div>
                           </div>
                         </div>
@@ -794,11 +779,10 @@ export default function App() {
                       {/* Right Side: Quick Action Terminals */}
                       <div className="lg:absolute lg:right-10 lg:top-1/2 lg:-translate-y-1/2 flex flex-col sm:flex-row lg:flex-col gap-4 sm:gap-6 z-40 w-full lg:w-auto items-center justify-center">
                         <motion.button 
-                          whileHover={{ scale: 1.02, x: -5 }}
-                          whileTap={{ scale: 0.98 }}
-                          className="w-full max-w-[280px] sm:w-64 flex items-center gap-4 bg-slate-900/90 hover:bg-slate-900 backdrop-blur-xl border border-slate-800 hover:border-cyan-500/50 p-4 sm:p-5 rounded-2xl sm:rounded-3xl transition-all group shadow-lg"
+                          whileHover={{ scale: 1.05, x: -10 }}
+                          className="w-full sm:w-64 flex items-center gap-4 bg-slate-900/80 hover:bg-cyan-500/10 backdrop-blur-xl border border-slate-800 hover:border-cyan-500/50 p-4 sm:p-5 rounded-2xl sm:rounded-3xl transition-all group"
                         >
-                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500 transition-colors shadow-inner">
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
                             <Utensils className="w-6 h-6 sm:w-7 sm:h-7 text-cyan-400 group-hover:text-white" />
                           </div>
                           <div className="text-left">
@@ -808,11 +792,10 @@ export default function App() {
                         </motion.button>
                         
                         <motion.button 
-                          whileHover={{ scale: 1.02, x: -5 }}
-                          whileTap={{ scale: 0.98 }}
-                          className="w-full max-w-[280px] sm:w-64 flex items-center gap-4 bg-slate-900/90 hover:bg-slate-900 backdrop-blur-xl border border-slate-800 hover:border-blue-500/50 p-4 sm:p-5 rounded-2xl sm:rounded-3xl transition-all group shadow-lg"
+                          whileHover={{ scale: 1.05, x: -10 }}
+                          className="w-full sm:w-64 flex items-center gap-4 bg-slate-900/80 hover:bg-blue-500/10 backdrop-blur-xl border border-slate-800 hover:border-blue-500/50 p-4 sm:p-5 rounded-2xl sm:rounded-3xl transition-all group"
                         >
-                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500 transition-colors shadow-inner">
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500 transition-colors">
                             <Activity className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400 group-hover:text-white" />
                           </div>
                           <div className="text-left">
