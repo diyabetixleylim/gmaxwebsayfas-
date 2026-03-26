@@ -49,7 +49,7 @@ const translations = {
       tag: "GELECEĞİN ÇEKİRDEĞİ ŞEKİLLENİYOR",
       title: "Görünmez",
       subtitle: "Metabolik Zeka.",
-      desc: "GMAX, biyolojinizi bir veri akışı gibi işleyen, sessiz ve kusursuz bir işletim sistemidir. Çok yakında, insan potansiyelini yeniden tanımlayan bu otonom mimari burada olacak.",
+      desc: "GmaX, biyolojinizi bir veri akışı gibi işleyen, sessiz ve kusursuz bir işletim sistemidir. Çok yakında, insan potansiyelini yeniden tanımlayan bu otonom mimari burada olacak.",
       cta: "Bekleme Listesine Katıl",
       comingSoon: "Uygulama Çok Yakında Burada",
       version: "v2.5.0-beta.hazırlık"
@@ -64,8 +64,8 @@ const translations = {
     features: {
       title: "Biyolojik Verinin",
       subtitle: "Sessiz Devrimi.",
-      desc: "GMAX, biyometrik verilerinizin derinliklerindeki görünmez desenleri çözen, otonom bir mimari üzerine inşa edilmiştir. Geleceğin çekirdeğini oluşturan bu mimari, insan biyolojisini bir veri disiplini olarak yeniden tanımlıyor.",
-      analytics: "Kuantum Öngörü",
+      desc: "GmaX, biyometrik verilerinizin derinliklerindeki görünmez desenleri çözen, otonom bir mimari üzerine inşa edilmiştir. Geleceğin çekirdeğini oluşturan bu mimari, insan biyolojisini bir veri disiplini olarak yeniden tanımlıyor.",
+      analytics: "Derin Öngörü",
       analyticsDesc: "Hücresel düzeydeki değişimleri milisaniyelik hassasiyetle takip eden algoritmalarımız, biyolojik trendlerinizi henüz gerçekleşmeden sessizce öngörür.",
       ai: "Gubi: Otonom Gözlemci",
       aiDesc: "Sizi sizden daha iyi tanıyan bir zeka. Gubi, karmaşık metabolik verileri anlamlı ve uygulanabilir stratejik içgörülere dönüştüren sessiz bir rehberdir.",
@@ -74,18 +74,18 @@ const translations = {
       community: "Vizyoner Ekosistem",
       communityDesc: "Veri ve deneyimin en yüksek gizlilik standartlarında paylaşıldığı, seçkin ve kapalı devre bir teknoloji ağı.",
       security: "Kriptografik Mühür",
-      securityDesc: "Verileriniz askeri düzeyde AES-256 ile mühürlenir. Gizlilik, GMAX mimarisinin sarsılmaz temel taşıdır.",
+      securityDesc: "Verileriniz askeri düzeyde AES-256 ile mühürlenir. Gizlilik, GmaX mimarisinin sarsılmaz temel taşıdır.",
       geo: "Lojistik Senkronizasyon",
       geoDesc: "Kritik anlarda en yakın destek ve veri noktalarını otonom olarak belirleyen, coğrafi sınırlardan bağımsız akıllı ağ."
     },
     api: {
       title: "Sınırsız",
       subtitle: "Dijital Senkronizasyon.",
-      desc: "GMAX API, biyolojik verilerinizi dijital evrenin geri kalanıyla kusursuz bir şekilde birleştirir. Geliştiriciler için otonom ve gizemli bir dünya."
+      desc: "GmaX API, biyolojik verilerinizi dijital evrenin geri kalanıyla kusursuz bir şekilde birleştirir. Geliştiriciler için otonom ve gizemli bir dünya."
     },
     architecture: {
       title: "Kusursuz Mimari.",
-      desc: "GMAX, sarsılmaz bir güven ve yüksek performans üzerine kurulu, görünmez bir teknolojik altyapıdır.",
+      desc: "GmaX, sarsılmaz bir güven ve yüksek performans üzerine kurulu, görünmez bir teknolojik altyapıdır.",
       items: [
         { title: "Uçtan Uca Kripto", desc: "Verileriniz TLS 1.3 ve AES-256 katmanları arasında mutlak bir gizlilikle korunur." },
         { title: "Otonom Bulut", desc: "Kendi kendini onaran ve optimize eden mikroservisler ile kesintisiz süreklilik." },
@@ -99,11 +99,11 @@ const translations = {
     },
     modal: {
       title: "Geleceğe İlk Adım",
-      desc: "GMAX uygulaması çok yakında yayına girecek. Bekleme listesine katılarak öncelikli erişim hakkı kazanın.",
+      desc: "GmaX uygulaması çok yakında yayına girecek. Bekleme listesine katılarak öncelikli erişim hakkı kazanın.",
       emailLabel: "E-posta Adresiniz",
       submit: "Listeye Kaydol",
       success: "Kaydınız başarıyla alındı. Gelişmelerden sizi haberdar edeceğiz.",
-      footer: "GMAX CORE TECHNOLOGIES © 2026"
+      footer: "GmaX CORE TECHNOLOGIES © 2026"
     }
   }
 };
@@ -124,9 +124,9 @@ export default function App() {
     const logs = [
       "[14:43:02] Biyometrik desen analizi başlatıldı...",
       "\"Sistem çekirdeği optimize ediliyor. Gubi devrede.\"",
-      "[14:43:45] Kuantum Öngörü Motoru: Aktif.",
+      "[14:43:45] Derin Öngörü Motoru: Aktif.",
       "[14:44:10] Metabolik sapma tespiti %99.9 hassasiyet.",
-      "\"GMAX Core: Gelecek verisi şimdiki zamana işleniyor.\"",
+      "\"GmaX Core: Gelecek verisi şimdiki zamana işleniyor.\"",
       "[14:45:00] Kriptografik mühürler mühürlendi."
     ];
     
@@ -140,9 +140,16 @@ export default function App() {
   }, []);
 
   const handleCtaClick = () => {
-    setModalStep(0);
+    const sagaSection = document.getElementById('saga');
+    if (sagaSection) {
+      sagaSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    toast.info("Gubi Protokolü başlatıldı. Hikaye aşağıda!");
+  };
+
+  const handleWaitlistClick = () => {
+    setModalStep(marvelNarrative.length);
     setIsModalOpen(true);
-    toast.info("Gubi Protokolü başlatıldı.");
   };
 
   const nextModalStep = () => setModalStep(prev => prev + 1);
@@ -155,9 +162,9 @@ export default function App() {
   const features = [
     {
       icon: <Activity className="w-6 h-6 text-cyan-600" />,
-      title: "KUANTUM ÖNGÖRÜ",
+      title: "DERİN ÖNGÖRÜ",
       description: "Gelecekteki metabolik değişimleri 45 dakika önceden milisaniyelik hassasiyetle öngörüyoruz. Gubi, biyometrik verilerini analiz ederek potansiyel riskleri henüz oluşmadan tespit eder.",
-      details: "GMAX'in Kuantum Öngörü Motoru, sürekli glikoz izleme (CGM) verilerini, kalp hızı değişkenliğini (HRV) ve uyku mimarisini çapraz referanslayarak çalışır. Gubi, bu devasa veri setinde insan gözünün kaçıracağı mikro-desenleri yakalar. Örneğin, kan şekerinin 45 dakika içinde düşebileceği veya yükselebileceği uyarısını vererek seni proaktif olarak uyarır. Bu sadece bir tahmin değil, biyolojik bir simülasyondur.",
+      details: "GmaX'in Derin Öngörü Motoru, sürekli glikoz izleme (CGM) verilerini, kalp hızı değişkenliğini (HRV) ve uyku mimarisini çapraz referanslayarak çalışır. Gubi, bu devasa veri setinde insan gözünün kaçıracağı mikro-desenleri yakalar. Örneğin, kan şekerinin 45 dakika içinde düşebileceği veya yükselebileceği uyarısını vererek seni proaktif olarak uyarır. Bu sadece bir tahmin değil, biyolojik bir simülasyondur.",
       tag: "FORESIGHT"
     },
     {
@@ -178,7 +185,7 @@ export default function App() {
       icon: <ShieldCheck className="w-6 h-6 text-cyan-600" />,
       title: "KRİPTOGRAFİK GÜVENLİK",
       description: "Biyometrik verilerin, askeri düzeyde AES-256 şifreleme ve TLS 1.3 protokolleri ile korunur. Gubi, verilerinin gizliliğini sarsılmaz bir kale gibi savunur.",
-      details: "GMAX mimarisinde verileriniz 'Zero-Knowledge' prensibiyle saklanır. Yani verilerinize sizden başka kimse, hatta biz bile erişemeyiz. Gubi, bu verileri yerel cihazında işleyerek buluta sadece anonimleştirilmiş ve şifrelenmiş özetler gönderir. Biyolojik verileriniz, dijital dünyadaki en değerli varlığınızdır ve biz onları sarsılmaz bir sadakatle koruyoruz.",
+      details: "GmaX mimarisinde verileriniz 'Zero-Knowledge' prensibiyle saklanır. Yani verilerinize sizden başka kimse, hatta biz bile erişemeyiz. Gubi, bu verileri yerel cihazında işleyerek buluta sadece anonimleştirilmiş ve şifrelenmiş özetler gönderir. Biyolojik verileriniz, dijital dünyadaki en değerli varlığınızdır ve biz onları sarsılmaz bir sadakatle koruyoruz.",
       tag: "SECURITY"
     }
   ];
@@ -249,59 +256,98 @@ export default function App() {
   const marvelNarrative = [
     {
       title: "SELAM, BEN GUBI!",
-      desc: "GMAX evrenine hoş geldin! Ben senin otonom metabolik rehberinim. Senin biyolojik verilerini bir süper kahraman gibi korumak ve yönetmek için buradayım.",
+      desc: "GmaX evrenine hoş geldin! Ben senin otonom metabolik rehberinim. Senin biyolojik verilerini bir süper kahraman gibi korumak ve yönetmek için buradayım. Bu yolculuk sadece kodlarla değil, gerçek bir hayat hikayesiyle başladı.",
       image: gubiImage,
-      action: "Hikayeyi Başlat"
+      action: "Hikayeyi Başlat",
+      reaction: "HELLO!",
+      badge1: "GMA!",
+      badge2: "GMAX!"
     },
     {
       title: "BİR KAHRAMANIN DOĞUŞU",
-      desc: "Her şey bir mücadeleyle başladı. Kurucularımızdan biri, her gün Tip-1 diyabetin zorluklarıyla savaşan bir savaşçıydı. Bu kişisel mücadele, GMAX'in kıvılcımını ateşledi.",
-      image: gubiImage,
-      action: "Devam Et"
+      desc: "Her şey bir mücadeleyle başladı. Kurucularımızdan biri, yıllardır Tip-1 diyabetin iniş çıkışlı yollarında yürüyen bir savaşçıydı. Her gün binlerce karar, bitmek bilmeyen hesaplamalar... GmaX, bu yorgunluğa son vermek için doğan bir umut ışığı oldu.",
+      image: "https://i.imgur.com/VXJPAMV.jpeg",
+      action: "Devam Et",
+      reaction: "VROOOM!",
+      badge1: "BOOM!",
+      badge2: "CRASH!"
     },
     {
       title: "DİYABETLE BARIŞMAK",
-      desc: "O artık diyabetiyle savaşmıyor, onunla barışık bir hayat sürüyor. GMAX sayesinde diyabet artık bir engel değil, yönetilebilir bir güç. Biz bu huzuru herkese yaymak için yola çıktık.",
-      image: gubiImage,
-      action: "Güçlerimi Gör"
+      desc: "O artık diyabetiyle savaşmıyor, onunla tam bir uyum içinde dans ediyor. GmaX'in sağladığı öngörü ve huzurla, diyabet artık hayatının merkezinde bir engel değil, sadece arka planda çalışan bir veri seti. Biz bu özgürlüğü seninle paylaşmaya geldik.",
+      image: "https://i.imgur.com/VXJPAMV.jpeg",
+      action: "Güçlerimi Gör",
+      reaction: "DANCE!",
+      badge1: "SWISH!",
+      badge2: "FLOW!"
     },
     {
       title: "45 DAKİKALIK ÖNGÖRÜ",
-      desc: "Geleceği görmeye hazır mısın? Kuantum motorumla kan şekerinin 45 dakika sonraki halini biliyorum. Düşüşleri ve yükselişleri henüz gerçekleşmeden sana fısıldıyorum.",
-      image: gubiImage,
-      action: "Beslenme Analizi"
+      desc: "Geleceği görmeye hazır mısın? Derin analiz motorumla kan şekerinin 45 dakika sonraki halini biliyorum. 'Acaba düşecek miyim?' endişesine son veriyorum. Ben senin için geleceği tarıyor ve seni her türlü sürprize karşı uyarıyorum.",
+      image: "https://i.imgur.com/VXJPAMV.jpeg",
+      action: "Beslenme Analizi",
+      reaction: "SCAN!",
+      badge1: "WHIZ!",
+      badge2: "BEEP!"
     },
     {
       title: "BESLENME SİMÜLASYONU",
-      desc: "Yediğin her lokmayı bir veri setine dönüştürüyorum. Şimdilik verileri elle giriyoruz ama çok yakında kameramla her şeyi bir bakışta tanıyacağım. İnsülin dozunu senin için simüle ediyorum.",
-      image: gubiImage,
-      action: "Ekosistemi Keşfet"
+      desc: "Yediğin her lokmanın vücudunda nasıl bir fırtına koparacağını önceden simüle ediyorum. Şimdilik verileri elle giriyoruz ama çok yakında kameramla her şeyi bir bakışta tanıyacağım. Hangi yemeğin sana ne yapacağını bilmek, en büyük süper gücün olacak.",
+      image: "https://i.imgur.com/VXJPAMV.jpeg",
+      action: "Ekosistemi Keşfet",
+      reaction: "YUM!",
+      badge1: "CRUNCH!",
+      badge2: "SİM!"
     },
     {
-      title: "GMAX ORDUSU",
-      desc: "Bu yolculukta yalnız değilsin. Topluluktan doktora, acil yardımdan duygu takibine kadar 12+ modüllük devasa bir ekosistem her an seninle.",
-      image: gubiImage,
-      action: "Güvenlik Mührü"
+      title: "GmaX ORDUSU",
+      desc: "Bu yolculukta asla yalnız değilsin. Topluluktan uzman doktorlara, acil durum protokollerinden duygu durum takibine kadar 12+ modüllük devasa bir ekosistem, senin her anında arkanda sarsılmaz bir ordu gibi duruyor.",
+      image: "https://i.imgur.com/VXJPAMV.jpeg",
+      action: "Güvenlik Mührü",
+      reaction: "UNIT!",
+      badge1: "TEAM!",
+      badge2: "WIN!"
     },
     {
       title: "KRİPTOGRAFİK KALE",
-      desc: "Verilerin askeri düzeyde AES-256 şifreleme ile korunuyor. Senin biyolojik verilerin, senin en mahrem kalendir ve ben o kalenin sarsılmaz muhafızıyım.",
-      image: gubiImage,
-      action: "Bize Katıl"
+      desc: "Verilerin askeri düzeyde AES-256 şifreleme ile korunuyor. Senin biyolojik verilerin, senin en mahrem kalendir ve ben o kalenin sarsılmaz muhafızıyım. Gizliliğin, benim en kutsal görevim.",
+      image: "https://i.imgur.com/VXJPAMV.jpeg",
+      action: "Bize Katıl",
+      reaction: "LOCK!",
+      badge1: "SAFE!",
+      badge2: "SEC!"
     },
     {
       title: "SENİ DE BEKLİYORUZ!",
-      desc: "GMAX devriminde yerini al. Metabolik özgürlüğüne giden bu yolculukta seni de aramızda görmek istiyoruz! Birlikte daha güçlüyüz.",
-      image: gubiImage,
-      action: "Kapat"
+      desc: "GmaX devriminde yerini al. Metabolik özgürlüğüne giden bu yolculukta seni de aramızda görmek istiyoruz! Birlikte, diyabeti bir engel olmaktan çıkarıp bir yaşam tarzına dönüştüreceğiz.",
+      image: "https://i.imgur.com/VXJPAMV.jpeg",
+      action: "Listeye Kaydol",
+      reaction: "JOIN!",
+      badge1: "GO!",
+      badge2: "NOW!"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-cyan-500/20 grid-bg scroll-smooth">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-cyan-500/20 grid-bg scroll-smooth relative">
+      <div className="page-bg" />
       <Toaster position="top-center" richColors />
       
       <style dangerouslySetInnerHTML={{ __html: `
+        .page-bg {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url('https://i.imgur.com/m1YFCzN.jpeg');
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          opacity: 0.03;
+          pointer-events: none;
+          z-index: -50;
+        }
         .comic-panel {
           position: relative;
           background: white;
@@ -355,16 +401,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <div className="w-12 h-12 rounded-xl overflow-hidden shadow-xl shadow-cyan-500/10 border border-white">
-                <img 
-                  src="https://i.imgur.com/m1YFCzN.jpeg" 
-                  alt="GMAX Logo" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <span className="text-2xl font-bold tracking-tighter text-slate-900 font-mono">
-                GMAX<span className="text-cyan-600">.io</span>
+              <span className="text-4xl font-black tracking-tighter text-slate-900 font-mono italic">
+                GmaX
               </span>
             </div>
 
@@ -383,7 +421,7 @@ export default function App() {
                 onClick={handleCtaClick}
                 className="text-[10px] font-black text-cyan-600 hover:text-cyan-700 transition-colors tracking-[0.2em] uppercase italic"
               >
-                GMAX SAGA
+                GmaX SAGA
               </button>
 
               <button 
@@ -428,7 +466,7 @@ export default function App() {
                 onClick={handleCtaClick}
                 className="text-xs font-black text-cyan-600 uppercase tracking-[0.2em] italic text-left"
               >
-                GMAX SAGA: HİKAYEYİ GÖR
+                GmaX SAGA: HİKAYEYİ GÖR
               </button>
               <button 
                 onClick={handleCtaClick}
@@ -444,18 +482,22 @@ export default function App() {
       {/* Hero Section */}
       <section id="platform" className="pt-40 pb-20 lg:pt-56 lg:pb-32 relative overflow-hidden">
         {/* Background Logo */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none overflow-hidden -z-20 opacity-[0.05]">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none overflow-hidden z-[-1]">
           <motion.img 
             initial={{ scale: 0.8, opacity: 0, rotate: 0 }}
-            animate={{ scale: 1, opacity: 0.05, rotate: 360 }}
+            animate={{ 
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3],
+              rotate: 360
+            }}
             transition={{ 
-              scale: { duration: 2 },
-              opacity: { duration: 2 },
-              rotate: { duration: 120, repeat: Infinity, ease: "linear" }
+              scale: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+              opacity: { duration: 10, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 300, repeat: Infinity, ease: "linear" }
             }}
             src={gmaxLogo} 
-            alt="GMAX Background Logo" 
-            className="w-[1000px] h-[1000px] object-contain mx-auto filter grayscale brightness-150"
+            alt="GmaX Background Logo" 
+            className="w-[1200px] h-[1200px] object-contain mx-auto filter brightness-110"
             referrerPolicy="no-referrer"
           />
         </div>
@@ -464,7 +506,7 @@ export default function App() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px]"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -491,7 +533,7 @@ export default function App() {
                     onClick={handleCtaClick}
                     className="bg-slate-900 text-white px-10 py-5 rounded-2xl font-black text-sm hover:bg-cyan-600 transition-all shadow-2xl shadow-slate-300 flex items-center gap-3 group uppercase tracking-widest border-b-4 border-slate-700"
                   >
-                    GMAX SAGA'YI BAŞLAT
+                    GmaX SAGA'YI BAŞLAT
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
@@ -645,7 +687,7 @@ export default function App() {
                 <div className="p-10 space-y-1 text-slate-600">
                   <p><span className="text-cyan-600">import</span> &#123; GmaxClient &#125; <span className="text-cyan-600">from</span> <span className="text-blue-600">'@gmax/core'</span>;</p>
                   <p>&nbsp;</p>
-                  <p><span className="text-slate-400">// Initialize GMAX Engine</span></p>
+                  <p><span className="text-slate-400">// Initialize GmaX Engine</span></p>
                   <p><span className="text-cyan-600">const</span> client = <span className="text-cyan-600">new</span> GmaxClient(&#123;</p>
                   <p>&nbsp;&nbsp;apiKey: process.env.GMAX_KEY,</p>
                   <p>&nbsp;&nbsp;mode: <span className="text-blue-600">'real-time'</span>,</p>
@@ -685,7 +727,7 @@ export default function App() {
                   {i === 0 && <ShieldCheck className="w-6 h-6 text-cyan-600" />}
                   {i === 1 && <Cpu className="w-6 h-6 text-cyan-600" />}
                   {i === 2 && <Globe className="w-6 h-6 text-cyan-600" />}
-                  {i === 3 && <Zap className="w-6 h-6 text-cyan-600" />}
+                  {i === 3 && <Sparkles className="w-6 h-6 text-cyan-600" />}
                 </div>
                 <h4 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h4>
                 <p className="text-sm text-slate-500 leading-relaxed font-light">{item.desc}</p>
@@ -695,31 +737,89 @@ export default function App() {
         </div>
       </section>
 
-      {/* Story CTA Section */}
-      <section className="py-24 bg-white border-y border-slate-100 relative overflow-hidden">
-        <div className="absolute inset-0 halftone opacity-5 pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-yellow-400 border-4 border-slate-900 inline-block px-6 py-2 mb-8 transform -rotate-2 shadow-[6px_6px_0_rgba(0,0,0,1)]">
-              <span className="font-black italic text-slate-900 uppercase tracking-tighter text-xl">GMAX SAGA: HİKAYEYİ KAÇIRMA!</span>
-            </div>
-            <h2 className="text-4xl lg:text-6xl font-black text-slate-900 mb-8 uppercase italic comic-title">Diyabetle Barışın Hikayesi</h2>
-            <p className="text-slate-500 text-lg mb-12 max-w-2xl mx-auto leading-relaxed font-light uppercase italic font-bold">
-              Kurucumuzun Tip-1 diyabet yolculuğundan ilham alan, Gubi'nin rehberliğinde bir teknoloji destanı.
-            </p>
-            <button 
-              onClick={handleCtaClick}
-              className="bg-slate-900 text-white px-12 py-6 rounded-none border-4 border-slate-900 font-black text-xl uppercase tracking-widest hover:bg-cyan-600 transition-all shadow-[10px_10px_0_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center gap-4 mx-auto"
+      {/* GmaX SAGA: The Comic Section */}
+      <section id="saga" className="py-32 bg-slate-900 relative overflow-hidden">
+        {/* Halftone Background */}
+        <div className="absolute inset-0 halftone opacity-10 pointer-events-none"></div>
+        
+        <div className="max-w-5xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-24">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-block bg-yellow-400 border-4 border-white px-8 py-3 mb-8 transform -rotate-2 shadow-[8px_8px_0_rgba(255,255,255,0.2)]"
             >
-              HİKAYEYİ ŞİMDİ GÖR
-              <ArrowRight className="w-6 h-6" />
-            </button>
-          </motion.div>
+              <h2 className="text-4xl lg:text-6xl font-black text-slate-900 uppercase italic tracking-tighter">GmaX SAGA: BÖLÜM 1</h2>
+            </motion.div>
+            <p className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase">Biyolojik Bir Destanın Başlangıcı</p>
+          </div>
+
+          <div className="space-y-32">
+            {marvelNarrative.map((panel, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, type: "spring" }}
+                className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
+              >
+                {/* Comic Panel Image */}
+                <div className="w-full lg:w-1/2">
+                  <div className="relative group">
+                    <div className="absolute -inset-4 bg-cyan-500/20 blur-xl group-hover:bg-cyan-500/40 transition-all duration-500 rounded-full"></div>
+                    <div className="relative bg-white border-8 border-slate-800 rounded-[3rem] overflow-hidden shadow-[20px_20px_0_rgba(6,182,212,0.3)] transform group-hover:scale-[1.02] transition-transform duration-500">
+                      <img 
+                        src={panel.image} 
+                        alt={panel.title} 
+                        className="w-full h-[400px] object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                      {/* Comic Badge */}
+                      <div className={`absolute ${idx % 2 === 0 ? 'top-8 -right-4' : 'top-8 -left-4'} bg-yellow-400 border-4 border-slate-900 px-6 py-2 font-black text-2xl text-slate-900 shadow-[5px_5px_0_rgba(0,0,0,1)] transform ${idx % 2 === 0 ? 'rotate-12' : '-rotate-12'}`}>
+                        {panel.badge2}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Comic Content */}
+                <div className="w-full lg:w-1/2 space-y-8">
+                  <div className="relative">
+                    <h3 className="text-5xl font-black text-white mb-6 tracking-tighter italic uppercase leading-none comic-title" style={{ WebkitTextStroke: '2px #0891b2' }}>
+                      {panel.title}
+                    </h3>
+                    
+                    <div className="relative">
+                      {/* Speech Bubble Style */}
+                      <div className="bg-white border-4 border-slate-800 p-8 rounded-3xl shadow-[10px_10px_0_rgba(255,255,255,0.1)] relative">
+                        <div className="absolute -top-4 left-8 w-8 h-8 bg-white border-l-4 border-t-4 border-slate-800 transform rotate-45"></div>
+                        <p className="text-xl text-slate-900 leading-tight font-black uppercase italic">
+                          {panel.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {idx === marvelNarrative.length - 1 && (
+                    <button 
+                      onClick={handleWaitlistClick}
+                      className="w-full bg-cyan-500 text-slate-900 px-12 py-6 rounded-none border-4 border-white font-black text-2xl uppercase tracking-widest hover:bg-yellow-400 transition-all shadow-[10px_10px_0_rgba(255,255,255,0.2)] active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center justify-center gap-4"
+                    >
+                      ŞİMDİ KATIL
+                      <ArrowRight className="w-8 h-8" />
+                    </button>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-1/4 -left-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-1/4 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]"></div>
       </section>
 
       {/* Footer */}
@@ -728,15 +828,7 @@ export default function App() {
           <div className="grid lg:grid-cols-12 gap-16 mb-24">
             <div className="lg:col-span-5">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img 
-                    src="https://i.imgur.com/m1YFCzN.jpeg" 
-                    alt="GMAX Logo" 
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <span className="text-2xl font-bold tracking-tighter text-slate-900 font-mono">GMAX<span className="text-cyan-600">.io</span></span>
+                <span className="text-4xl font-black tracking-tighter text-slate-900 font-mono italic">GmaX</span>
               </div>
               <p className="text-lg max-w-md mb-10 leading-relaxed font-light">
                 {t.footer.desc}
@@ -780,7 +872,7 @@ export default function App() {
             </div>
           </div>
           <div className="border-t border-slate-200 pt-12 flex flex-col md:row justify-between items-center gap-6 text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400">
-            <p>© 2026 GMAX_CORE_SYSTEM. ALL_RIGHTS_RESERVED.</p>
+            <p>© 2026 GmaX_CORE_SYSTEM. ALL_RIGHTS_RESERVED.</p>
             <div className="flex gap-8">
               <span>{t.footer.status}</span>
               <span>VERSION: 2.4.12</span>
@@ -817,7 +909,7 @@ export default function App() {
                   
                   {/* Comic Header */}
                   <div className="bg-slate-900 text-white py-4 px-8 flex justify-between items-center relative z-10">
-                    <span className="font-black italic tracking-tighter text-xl">GMAX COMICS #001</span>
+                    <span className="font-black italic tracking-tighter text-xl">GmaX COMICS #001</span>
                     <button onClick={() => setIsModalOpen(false)} className="hover:text-cyan-400 transition-colors">
                       <X className="w-6 h-6" />
                     </button>
@@ -836,15 +928,15 @@ export default function App() {
                     <div className="relative">
                       {/* Speech Bubble Effect */}
                       <div className="absolute -top-16 -right-8 bg-white border-4 border-slate-900 rounded-2xl px-6 py-3 font-black text-xs text-slate-900 shadow-[5px_5px_0_rgba(0,0,0,1)] transform rotate-12 z-20">
-                        BİP BİP!
+                        {marvelNarrative[modalStep].reaction}
                       </div>
 
                       {/* Comic Badges */}
                       <div className="absolute -top-24 -left-12 bg-yellow-400 border-4 border-slate-900 px-4 py-2 font-black text-xl text-slate-900 shadow-[5px_5px_0_rgba(0,0,0,1)] transform -rotate-12 z-20">
-                        POW!
+                        {marvelNarrative[modalStep].badge1}
                       </div>
                       <div className="absolute top-12 -right-16 bg-cyan-400 border-4 border-slate-900 px-4 py-2 font-black text-xl text-slate-900 shadow-[5px_5px_0_rgba(0,0,0,1)] transform rotate-12 z-20">
-                        ZAP!
+                        {marvelNarrative[modalStep].badge2}
                       </div>
                       
                       <h3 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter italic uppercase leading-none">
@@ -857,13 +949,29 @@ export default function App() {
                       </div>
                     </div>
 
-                    <button 
-                      onClick={nextModalStep}
-                      className="bg-cyan-500 text-slate-900 px-12 py-4 rounded-none border-4 border-slate-900 font-black text-xl uppercase tracking-widest hover:bg-yellow-400 transition-all shadow-[8px_8px_0_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center gap-3"
-                    >
-                      {marvelNarrative[modalStep].action}
-                      <ArrowRight className="w-6 h-6" />
-                    </button>
+                    <div className="flex flex-wrap justify-center gap-4">
+                      {modalStep > 0 && (
+                        <button 
+                          onClick={prevModalStep}
+                          className="bg-white text-slate-900 px-6 py-3 rounded-none border-4 border-slate-900 font-black text-lg uppercase tracking-widest hover:bg-slate-100 transition-all shadow-[6px_6px_0_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
+                        >
+                          Geri
+                        </button>
+                      )}
+                      <button 
+                        onClick={nextModalStep}
+                        className="bg-cyan-500 text-slate-900 px-10 py-4 rounded-none border-4 border-slate-900 font-black text-xl uppercase tracking-widest hover:bg-yellow-400 transition-all shadow-[8px_8px_0_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center gap-3"
+                      >
+                        {marvelNarrative[modalStep].action}
+                        <ArrowRight className="w-6 h-6" />
+                      </button>
+                      <button 
+                        onClick={() => setModalStep(marvelNarrative.length)}
+                        className="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-slate-900 transition-colors mt-2 w-full"
+                      >
+                        Hikayeyi Geç ve Kaydol
+                      </button>
+                    </div>
                   </div>
 
                   {/* Comic Footer */}
@@ -873,7 +981,7 @@ export default function App() {
                         <div key={i} className={`w-4 h-4 border-2 border-slate-900 ${i === modalStep ? 'bg-slate-900' : 'bg-white'}`}></div>
                       ))}
                     </div>
-                    <span className="font-black italic text-sm text-slate-900">PAGE {modalStep + 1} OF 5</span>
+                    <span className="font-black italic text-sm text-slate-900">PAGE {modalStep + 1} OF {marvelNarrative.length}</span>
                   </div>
                 </div>
               ) : (
