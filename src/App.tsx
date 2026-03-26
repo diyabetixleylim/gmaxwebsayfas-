@@ -514,7 +514,7 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="platform" className="pt-40 pb-20 lg:pt-56 lg:pb-32 relative overflow-hidden">
+      <section id="platform" className="pt-32 pb-16 lg:pt-56 lg:pb-32 relative overflow-hidden">
         {/* Background Logo */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none overflow-hidden z-[-1]">
           <motion.img 
@@ -531,7 +531,7 @@ export default function App() {
             }}
             src={gmaxLogo} 
             alt="GmaX Background Logo" 
-            className="w-[1200px] h-[1200px] object-contain mx-auto filter brightness-110"
+            className="w-[600px] sm:w-[1200px] h-[600px] sm:h-[1200px] object-contain mx-auto filter brightness-110"
             referrerPolicy="no-referrer"
           />
         </div>
@@ -547,17 +547,17 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex justify-center mb-12">
+              <div className="flex justify-center mb-8 sm:mb-12">
                 <motion.div 
                   animate={{ y: [0, -15, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-48 h-48 rounded-[3rem] bg-white p-3 shadow-2xl shadow-cyan-500/30 border border-slate-100 overflow-hidden relative group"
+                  className="w-32 h-32 sm:w-48 sm:h-48 rounded-[2rem] sm:rounded-[3rem] bg-white p-2 sm:p-3 shadow-2xl shadow-cyan-500/30 border border-slate-100 overflow-hidden relative group"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <img 
                     src="https://i.imgur.com/m1YFCzN.jpeg" 
                     alt="GmaX Core" 
-                    className="w-full h-full object-cover rounded-[2.5rem] shadow-inner"
+                    className="w-full h-full object-cover rounded-[1.5rem] sm:rounded-[2.5rem] shadow-inner"
                     referrerPolicy="no-referrer"
                   />
                 </motion.div>
@@ -566,11 +566,11 @@ export default function App() {
                 <Sparkles className="w-3 h-3 fill-current" />
                 {t.hero.tag}
               </div>
-              <h1 className="text-6xl lg:text-8xl font-bold text-slate-900 leading-[1] mb-8 tracking-tighter">
+              <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-slate-900 leading-[1.1] sm:leading-[1] mb-8 tracking-tighter">
                 {t.hero.title} <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">{t.hero.subtitle}</span>
               </h1>
-              <p className="text-xl text-slate-500 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+              <p className="text-lg sm:text-xl text-slate-500 mb-12 max-w-2xl mx-auto leading-relaxed font-light px-4">
                 {t.hero.desc}
               </p>
               <div className="flex flex-col sm:row gap-6 justify-center items-center">
@@ -608,7 +608,7 @@ export default function App() {
                 <div className="grid lg:grid-cols-12 gap-8 relative z-20">
                   {/* Gubi Hologram Interface */}
                   <div className="lg:col-span-12">
-                    <div className="relative w-full aspect-[21/9] flex items-center justify-center overflow-hidden rounded-[4rem] bg-slate-950 border-x-8 border-slate-900 shadow-[0_0_150px_rgba(6,182,212,0.2)] group">
+                    <div className="relative w-full aspect-square sm:aspect-video lg:aspect-[21/9] flex flex-col lg:items-center lg:justify-center overflow-y-auto lg:overflow-visible p-6 sm:p-20 rounded-3xl sm:rounded-[4rem] bg-slate-950 border-x-4 sm:border-x-8 border-slate-900 shadow-[0_0_150px_rgba(6,182,212,0.2)] group">
                       {/* Background Grid & Neural Network Effect */}
                       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #22d3ee 1px, transparent 0)', backgroundSize: '30px 30px' }}></div>
                       <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
@@ -646,7 +646,7 @@ export default function App() {
                       </div>
 
                       {/* Central Gubi AI Entity */}
-                      <div className="relative z-30 flex flex-col items-center">
+                      <div className="relative z-30 flex flex-col items-center mb-12 lg:mb-0">
                         <motion.div 
                           animate={{ 
                             y: [0, -25, 0],
@@ -689,7 +689,7 @@ export default function App() {
                           </motion.div>
 
                           {/* The Gubi Core */}
-                          <div className="relative w-72 h-72 rounded-full p-1 bg-gradient-to-tr from-cyan-500 to-blue-500 shadow-[0_0_60px_rgba(6,182,212,0.5)]">
+                          <div className="relative w-48 h-48 sm:w-72 sm:h-72 rounded-full p-1 bg-gradient-to-tr from-cyan-500 to-blue-500 shadow-[0_0_60px_rgba(6,182,212,0.5)]">
                             <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 relative">
                               <img 
                                 src="https://i.imgur.com/VXJPAMV.jpeg" 
@@ -715,13 +715,13 @@ export default function App() {
                         </motion.div>
 
                         
-                        <div className="mt-12 text-center relative">
+                        <div className="mt-8 sm:mt-12 text-center relative">
                           <motion.div 
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="space-y-2"
                           >
-                            <h3 className="text-5xl font-black text-white tracking-tighter italic flex items-center justify-center gap-4">
+                            <h3 className="text-3xl sm:text-5xl font-black text-white tracking-tighter italic flex items-center justify-center gap-4">
                               <span className="text-cyan-500">GUBI</span>
                               <span className="text-slate-400 opacity-50">/</span>
                               <span>AI CORE</span>
@@ -741,10 +741,10 @@ export default function App() {
                       </div>
 
                       {/* Left Side: Real-time Analytics */}
-                      <div className="absolute left-10 top-1/2 -translate-y-1/2 space-y-8 hidden xl:block">
+                      <div className="lg:absolute lg:left-10 lg:top-1/2 lg:-translate-y-1/2 flex flex-row lg:flex-col gap-6 mb-12 lg:mb-0 w-full lg:w-auto justify-around lg:justify-start z-40">
                         <div className="space-y-2">
                           <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Biometric_Data</p>
-                          <div className="w-48 h-24 bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-xl p-3 relative overflow-hidden">
+                          <div className="w-32 sm:w-48 h-16 sm:h-24 bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-xl p-2 sm:p-3 relative overflow-hidden">
                             <div className="flex items-end gap-1 h-full">
                               {[40, 70, 45, 90, 65, 80, 50, 85, 60, 95].map((h, i) => (
                                 <motion.div 
@@ -777,57 +777,57 @@ export default function App() {
                       </div>
 
                       {/* Right Side: Quick Action Terminals */}
-                      <div className="absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-40">
+                      <div className="lg:absolute lg:right-10 lg:top-1/2 lg:-translate-y-1/2 flex flex-col sm:flex-row lg:flex-col gap-4 sm:gap-6 z-40 w-full lg:w-auto items-center justify-center">
                         <motion.button 
                           whileHover={{ scale: 1.05, x: -10 }}
-                          className="w-64 flex items-center gap-4 bg-slate-900/80 hover:bg-cyan-500/10 backdrop-blur-xl border border-slate-800 hover:border-cyan-500/50 p-5 rounded-3xl transition-all group"
+                          className="w-full sm:w-64 flex items-center gap-4 bg-slate-900/80 hover:bg-cyan-500/10 backdrop-blur-xl border border-slate-800 hover:border-cyan-500/50 p-4 sm:p-5 rounded-2xl sm:rounded-3xl transition-all group"
                         >
-                          <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
-                            <Utensils className="w-7 h-7 text-cyan-400 group-hover:text-white" />
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
+                            <Utensils className="w-6 h-6 sm:w-7 sm:h-7 text-cyan-400 group-hover:text-white" />
                           </div>
                           <div className="text-left">
                             <p className="text-[10px] font-bold text-cyan-400/60 uppercase tracking-widest">Beslenme</p>
-                            <p className="text-[14px] font-black text-white uppercase italic tracking-tighter">AI Analizi</p>
+                            <p className="text-[12px] sm:text-[14px] font-black text-white uppercase italic tracking-tighter">AI Analizi</p>
                           </div>
                         </motion.button>
                         
                         <motion.button 
                           whileHover={{ scale: 1.05, x: -10 }}
-                          className="w-64 flex items-center gap-4 bg-slate-900/80 hover:bg-blue-500/10 backdrop-blur-xl border border-slate-800 hover:border-blue-500/50 p-5 rounded-3xl transition-all group"
+                          className="w-full sm:w-64 flex items-center gap-4 bg-slate-900/80 hover:bg-blue-500/10 backdrop-blur-xl border border-slate-800 hover:border-blue-500/50 p-4 sm:p-5 rounded-2xl sm:rounded-3xl transition-all group"
                         >
-                          <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500 transition-colors">
-                            <Activity className="w-7 h-7 text-blue-400 group-hover:text-white" />
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500 transition-colors">
+                            <Activity className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400 group-hover:text-white" />
                           </div>
                           <div className="text-left">
                             <p className="text-[10px] font-bold text-blue-400/60 uppercase tracking-widest">Aktivite</p>
-                            <p className="text-[14px] font-black text-white uppercase italic tracking-tighter">AI Optimizasyon</p>
+                            <p className="text-[12px] sm:text-[14px] font-black text-white uppercase italic tracking-tighter">AI Optimizasyon</p>
                           </div>
                         </motion.button>
                       </div>
 
-                      {/* Bottom: Console Stream */}
-                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[600px] hidden lg:block">
-                        <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 p-4 rounded-2xl flex items-center gap-6">
-                          <div className="flex items-center gap-2 text-cyan-500">
-                            <Terminal className="w-4 h-4" />
-                            <span className="text-[10px] font-black uppercase tracking-widest">Live_Feed</span>
-                          </div>
-                          <div className="h-4 w-px bg-slate-800"></div>
-                          <div className="flex-1 overflow-hidden h-5 relative">
-                            <AnimatePresence mode="wait">
-                              <motion.p 
-                                key={aiLogs[0]}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                className="text-[10px] font-mono text-slate-400 truncate"
-                              >
-                                {aiLogs[0]}
-                              </motion.p>
-                            </AnimatePresence>
+                        {/* Bottom: Console Stream */}
+                        <div className="lg:absolute lg:bottom-6 lg:left-1/2 lg:-translate-x-1/2 w-full lg:w-[600px] mt-8 lg:mt-0">
+                          <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 p-3 sm:p-4 rounded-xl sm:rounded-2xl flex items-center gap-4 sm:gap-6">
+                            <div className="flex items-center gap-2 text-cyan-500 shrink-0">
+                              <Terminal className="w-4 h-4" />
+                              <span className="text-[10px] font-black uppercase tracking-widest">Live_Feed</span>
+                            </div>
+                            <div className="h-4 w-px bg-slate-800 shrink-0"></div>
+                            <div className="flex-1 overflow-hidden h-5 relative">
+                              <AnimatePresence mode="wait">
+                                <motion.p 
+                                  key={aiLogs[0]}
+                                  initial={{ opacity: 0, y: 10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: -10 }}
+                                  className="text-[10px] font-mono text-slate-400 truncate"
+                                >
+                                  {aiLogs[0]}
+                                </motion.p>
+                              </AnimatePresence>
+                            </div>
                           </div>
                         </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -1031,7 +1031,7 @@ export default function App() {
                       <img 
                         src={panel.image} 
                         alt={panel.title} 
-                        className="w-full h-[400px] object-cover"
+                        className="w-full h-[250px] sm:h-[400px] object-cover"
                         referrerPolicy="no-referrer"
                       />
                       {/* Comic Badge */}
@@ -1045,15 +1045,15 @@ export default function App() {
                 {/* Comic Content */}
                 <div className="w-full lg:w-1/2 space-y-8">
                   <div className="relative">
-                    <h3 className="text-5xl font-black text-white mb-6 tracking-tighter italic uppercase leading-none comic-title" style={{ WebkitTextStroke: '2px #0891b2' }}>
+                    <h3 className="text-3xl sm:text-5xl font-black text-white mb-6 tracking-tighter italic uppercase leading-none comic-title" style={{ WebkitTextStroke: '2px #0891b2' }}>
                       {panel.title}
                     </h3>
                     
                     <div className="relative">
                       {/* Speech Bubble Style */}
-                      <div className="bg-white border-4 border-slate-800 p-8 rounded-3xl shadow-[10px_10px_0_rgba(255,255,255,0.1)] relative">
+                      <div className="bg-white border-4 border-slate-800 p-6 sm:p-8 rounded-3xl shadow-[10px_10px_0_rgba(255,255,255,0.1)] relative">
                         <div className="absolute -top-4 left-8 w-8 h-8 bg-white border-l-4 border-t-4 border-slate-800 transform rotate-45"></div>
-                        <p className="text-xl text-slate-900 leading-tight font-black uppercase italic">
+                        <p className="text-lg sm:text-xl text-slate-900 leading-tight font-black uppercase italic">
                           {panel.desc}
                         </p>
                       </div>
@@ -1166,71 +1166,71 @@ export default function App() {
               className="relative w-full max-w-2xl bg-white rounded-[2.5rem] shadow-[0_0_50px_rgba(6,182,212,0.3)] overflow-hidden border-4 border-slate-900"
             >
               {modalStep < marvelNarrative.length ? (
-                <div className="relative h-[600px] flex flex-col comic-bg">
+                <div className="relative min-h-[500px] max-h-[85vh] sm:h-[600px] flex flex-col comic-bg overflow-y-auto sm:overflow-hidden">
                   {/* Halftone Pattern Overlay */}
                   <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '4px 4px' }}></div>
                   
                   {/* Comic Header */}
-                  <div className="bg-slate-900 text-white py-4 px-8 flex justify-between items-center relative z-10">
-                    <span className="font-black italic tracking-tighter text-xl">GmaX COMICS #001</span>
+                  <div className="bg-slate-900 text-white py-3 sm:py-4 px-6 sm:px-8 flex justify-between items-center sticky top-0 z-20">
+                    <span className="font-black italic tracking-tighter text-lg sm:text-xl">GmaX COMICS #001</span>
                     <button onClick={() => setIsModalOpen(false)} className="hover:text-cyan-400 transition-colors">
-                      <X className="w-6 h-6" />
+                      <X className="w-5 h-5 sm:w-6 sm:h-6" />
                     </button>
                   </div>
 
-                  <div className="flex-1 p-8 flex flex-col items-center justify-center text-center relative z-10">
+                  <div className="flex-1 p-6 sm:p-8 flex flex-col items-center justify-center text-center relative z-10">
                     <motion.div 
                       initial={{ scale: 0, rotate: -10 }}
                       animate={{ scale: 1, rotate: 0 }}
                       transition={{ delay: 0.3, type: "spring" }}
-                      className="w-48 h-48 rounded-3xl border-8 border-slate-900 shadow-[10px_10px_0_rgba(6,182,212,1)] overflow-hidden mb-8 relative"
+                      className="w-32 h-32 sm:w-48 sm:h-48 rounded-2xl sm:rounded-3xl border-4 sm:border-8 border-slate-900 shadow-[6px_6px_0_rgba(6,182,212,1)] sm:shadow-[10px_10px_0_rgba(6,182,212,1)] overflow-hidden mb-6 sm:mb-8 relative"
                     >
                       <img src={marvelNarrative[modalStep].image} alt="Gubi" className="w-full h-full object-cover" />
                     </motion.div>
 
-                    <div className="relative">
+                    <div className="relative w-full max-w-md">
                       {/* Speech Bubble Effect */}
-                      <div className="absolute -top-16 -right-8 bg-white border-4 border-slate-900 rounded-2xl px-6 py-3 font-black text-xs text-slate-900 shadow-[5px_5px_0_rgba(0,0,0,1)] transform rotate-12 z-20">
+                      <div className="absolute -top-12 -right-4 sm:-top-16 sm:-right-8 bg-white border-2 sm:border-4 border-slate-900 rounded-xl sm:rounded-2xl px-4 py-2 sm:px-6 sm:py-3 font-black text-[10px] sm:text-xs text-slate-900 shadow-[3px_3px_0_rgba(0,0,0,1)] sm:shadow-[5px_5px_0_rgba(0,0,0,1)] transform rotate-12 z-20">
                         {marvelNarrative[modalStep].reaction}
                       </div>
 
                       {/* Comic Badges */}
-                      <div className="absolute -top-24 -left-12 bg-yellow-400 border-4 border-slate-900 px-4 py-2 font-black text-xl text-slate-900 shadow-[5px_5px_0_rgba(0,0,0,1)] transform -rotate-12 z-20">
+                      <div className="absolute -top-20 -left-4 sm:-top-24 sm:-left-12 bg-yellow-400 border-2 sm:border-4 border-slate-900 px-3 py-1 sm:px-4 sm:py-2 font-black text-sm sm:text-xl text-slate-900 shadow-[3px_3px_0_rgba(0,0,0,1)] sm:shadow-[5px_5px_0_rgba(0,0,0,1)] transform -rotate-12 z-20">
                         {marvelNarrative[modalStep].badge1}
                       </div>
-                      <div className="absolute top-12 -right-16 bg-cyan-400 border-4 border-slate-900 px-4 py-2 font-black text-xl text-slate-900 shadow-[5px_5px_0_rgba(0,0,0,1)] transform rotate-12 z-20">
+                      <div className="absolute top-8 -right-8 sm:top-12 sm:-right-16 bg-cyan-400 border-2 sm:border-4 border-slate-900 px-3 py-1 sm:px-4 sm:py-2 font-black text-sm sm:text-xl text-slate-900 shadow-[3px_3px_0_rgba(0,0,0,1)] sm:shadow-[5px_5px_0_rgba(0,0,0,1)] transform rotate-12 z-20">
                         {marvelNarrative[modalStep].badge2}
                       </div>
                       
-                      <h3 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter italic uppercase leading-none">
+                      <h3 className="text-3xl sm:text-5xl font-black text-slate-900 mb-4 sm:mb-6 tracking-tighter italic uppercase leading-none">
                         {marvelNarrative[modalStep].title}
                       </h3>
-                      <div className="bg-white border-4 border-slate-900 p-6 shadow-[8px_8px_0_rgba(0,0,0,1)] mb-10 transform -rotate-1">
-                        <p className="text-lg text-slate-900 leading-tight font-black uppercase italic">
+                      <div className="bg-white border-2 sm:border-4 border-slate-900 p-4 sm:p-6 shadow-[5px_5px_0_rgba(0,0,0,1)] sm:shadow-[8px_8px_0_rgba(0,0,0,1)] mb-6 sm:mb-10 transform -rotate-1">
+                        <p className="text-sm sm:text-lg text-slate-900 leading-tight font-black uppercase italic">
                           {marvelNarrative[modalStep].desc}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-4">
+                    <div className="flex flex-wrap justify-center gap-3 sm:gap-4 w-full">
                       {modalStep > 0 && (
                         <button 
                           onClick={prevModalStep}
-                          className="bg-white text-slate-900 px-6 py-3 rounded-none border-4 border-slate-900 font-black text-lg uppercase tracking-widest hover:bg-slate-100 transition-all shadow-[6px_6px_0_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
+                          className="flex-1 sm:flex-none bg-white text-slate-900 px-4 py-2 sm:px-6 sm:py-3 rounded-none border-2 sm:border-4 border-slate-900 font-black text-sm sm:text-lg uppercase tracking-widest hover:bg-slate-100 transition-all shadow-[4px_4px_0_rgba(0,0,0,1)] sm:shadow-[6px_6px_0_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
                         >
                           Geri
                         </button>
                       )}
                       <button 
                         onClick={nextModalStep}
-                        className="bg-cyan-500 text-slate-900 px-10 py-4 rounded-none border-4 border-slate-900 font-black text-xl uppercase tracking-widest hover:bg-yellow-400 transition-all shadow-[8px_8px_0_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center gap-3"
+                        className="flex-[2] sm:flex-none bg-cyan-500 text-slate-900 px-6 py-3 sm:px-10 sm:py-4 rounded-none border-2 sm:border-4 border-slate-900 font-black text-sm sm:text-xl uppercase tracking-widest hover:bg-yellow-400 transition-all shadow-[6px_6px_0_rgba(0,0,0,1)] sm:shadow-[8px_8px_0_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center justify-center gap-2 sm:gap-3"
                       >
                         {marvelNarrative[modalStep].action}
-                        <ArrowRight className="w-6 h-6" />
+                        <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
                       </button>
                       <button 
                         onClick={() => setModalStep(marvelNarrative.length)}
-                        className="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-slate-900 transition-colors mt-2 w-full"
+                        className="text-[9px] sm:text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-slate-900 transition-colors mt-2 w-full"
                       >
                         Hikayeyi Geç ve Kaydol
                       </button>
@@ -1238,13 +1238,13 @@ export default function App() {
                   </div>
 
                   {/* Comic Footer */}
-                  <div className="bg-yellow-400 border-t-4 border-slate-900 p-4 flex justify-between items-center px-8 relative z-10">
-                    <div className="flex gap-2">
+                  <div className="bg-yellow-400 border-t-2 sm:border-t-4 border-slate-900 p-3 sm:p-4 flex justify-between items-center px-6 sm:px-8 sticky bottom-0 z-20">
+                    <div className="flex gap-1.5 sm:gap-2">
                       {marvelNarrative.map((_, i) => (
-                        <div key={i} className={`w-4 h-4 border-2 border-slate-900 ${i === modalStep ? 'bg-slate-900' : 'bg-white'}`}></div>
+                        <div key={i} className={`w-3 h-3 sm:w-4 sm:h-4 border-2 border-slate-900 ${i === modalStep ? 'bg-slate-900' : 'bg-white'}`}></div>
                       ))}
                     </div>
-                    <span className="font-black italic text-sm text-slate-900">PAGE {modalStep + 1} OF {marvelNarrative.length}</span>
+                    <span className="font-black italic text-xs text-slate-900 uppercase">PAGE {modalStep + 1} OF {marvelNarrative.length}</span>
                   </div>
                 </div>
               ) : (
