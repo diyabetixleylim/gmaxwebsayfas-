@@ -35,7 +35,13 @@ import {
   AlertCircle,
   User,
   Sparkles,
-  Command
+  Command,
+  Fingerprint,
+  Battery,
+  ArrowUpRight,
+  Settings,
+  Mail,
+  Instagram
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Toaster, toast } from "sonner";
@@ -69,7 +75,7 @@ const translations = {
       analyticsDesc: "Hücresel düzeydeki değişimleri milisaniyelik hassasiyetle takip eden algoritmalarımız, biyolojik trendlerinizi henüz gerçekleşmeden sessizce öngörür.",
       ai: "Gubi: Otonom Gözlemci",
       aiDesc: "Sizi sizden daha iyi tanıyan bir zeka. Gubi, karmaşık metabolik verileri anlamlı ve uygulanabilir stratejik içgörülere dönüştüren sessiz bir rehberdir.",
-      nutrition: "Moleküler Simülasyon",
+      nutrition: "Mol-Sim",
       nutritionDesc: "Beslenmeyi bir mühendislik disiplinine dönüştürüyoruz. Her biyokimyasal etkileşimi simüle eden, veriye dayalı kusursuz bir modelleme.",
       community: "Vizyoner Ekosistem",
       communityDesc: "Veri ve deneyimin en yüksek gizlilik standartlarında paylaşıldığı, seçkin ve kapalı devre bir teknoloji ağı.",
@@ -176,7 +182,7 @@ export default function App() {
     },
     {
       icon: <Database className="w-6 h-6 text-cyan-600" />,
-      title: "MOLEKÜLER SİMÜLASY",
+      title: "MOL-SİM",
       description: "Besinlerin hücresel düzeydeki etkilerini simüle ediyoruz. Gubi, tükettiğin her gıdanın biyokimyasal yanıtını önceden hesaplayarak sana en uygun rotayı çizer.",
       details: "Beslenme modülü, aldığın karbonhidrat miktarını kaydetmeni sağlar. Şu an verileri elle girerek Gubi'nin analizini görebilirsin. Çok yakında kamera ve barkod sistemi ile gıdaları anında tanıma özelliği de eklenecek. Gubi, bu verileri kullanarak senin spesifik biyokimyana göre önerilen insülin dozajını hesaplar ve glikoz yükselişini saniyeler içinde modelleyerek stratejik tavsiyeler sunar.",
       tag: "DATA"
@@ -336,17 +342,22 @@ export default function App() {
       <style dangerouslySetInnerHTML={{ __html: `
         .page-bg {
           position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
           background-image: url('https://i.imgur.com/m1YFCzN.jpeg');
-          background-size: cover;
+          background-size: contain;
           background-position: center;
-          background-attachment: fixed;
-          opacity: 0.03;
+          background-repeat: no-repeat;
+          opacity: 0.08;
           pointer-events: none;
           z-index: -50;
+          animation: slow-rotate 120s linear infinite;
+        }
+        @keyframes slow-rotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
         .comic-panel {
           position: relative;
@@ -400,28 +411,38 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <span className="text-4xl font-black tracking-tighter text-slate-900 font-mono italic">
                 GmaX
               </span>
             </div>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6">
               {t.nav.map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-[10px] font-bold text-slate-500 hover:text-cyan-600 transition-colors tracking-widest uppercase"
+                  className="relative flex items-center justify-center px-6 py-2 group"
                 >
-                  {item}
+                  <div className="absolute inset-0 flex items-center justify-center text-cyan-500/15 group-hover:text-cyan-500/30 transition-all duration-500 pointer-events-none">
+                    <Fingerprint className="w-10 h-10 rotate-12 group-hover:rotate-0 transition-transform duration-700" />
+                  </div>
+                  <span className="relative z-10 text-[10px] font-bold text-slate-500 group-hover:text-cyan-600 transition-colors tracking-widest uppercase">
+                    {item}
+                  </span>
                 </a>
               ))}
               <button 
                 onClick={handleCtaClick}
-                className="text-[10px] font-black text-cyan-600 hover:text-cyan-700 transition-colors tracking-[0.2em] uppercase italic"
+                className="relative flex items-center justify-center px-6 py-2 group"
               >
-                GmaX SAGA
+                <div className="absolute inset-0 flex items-center justify-center text-cyan-500/15 group-hover:text-cyan-500/30 transition-all duration-500 pointer-events-none">
+                  <Fingerprint className="w-10 h-10 -rotate-12 group-hover:rotate-0 transition-transform duration-700" />
+                </div>
+                <span className="relative z-10 text-[10px] font-black text-cyan-600 group-hover:text-cyan-700 transition-colors tracking-[0.2em] uppercase italic">
+                  GmaX SAGA
+                </span>
               </button>
 
               <button 
@@ -456,17 +477,30 @@ export default function App() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-xs font-bold text-slate-500 uppercase tracking-widest"
+                  className="relative flex items-center justify-between p-4 group overflow-hidden rounded-2xl"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item}
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-cyan-500/15 group-hover:text-cyan-500/25 transition-colors pointer-events-none">
+                    <Fingerprint className="w-16 h-16 rotate-12" />
+                  </div>
+                  <span className="relative z-10 text-xs font-bold text-slate-500 uppercase tracking-widest group-hover:text-cyan-600 transition-colors">
+                    {item}
+                  </span>
                 </a>
               ))}
               <button 
-                onClick={handleCtaClick}
-                className="text-xs font-black text-cyan-600 uppercase tracking-[0.2em] italic text-left"
+                onClick={() => {
+                  handleCtaClick();
+                  setIsMenuOpen(false);
+                }}
+                className="relative flex items-center justify-between p-4 group overflow-hidden rounded-2xl"
               >
-                GmaX SAGA: HİKAYEYİ GÖR
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-cyan-500/15 group-hover:text-cyan-500/25 transition-colors pointer-events-none">
+                  <Fingerprint className="w-16 h-16 -rotate-12" />
+                </div>
+                <span className="relative z-10 text-xs font-black text-cyan-600 uppercase tracking-[0.2em] italic group-hover:text-cyan-700 transition-colors">
+                  GmaX SAGA: HİKAYEYİ GÖR
+                </span>
               </button>
               <button 
                 onClick={handleCtaClick}
@@ -513,6 +547,21 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
+              <div className="flex justify-center mb-12">
+                <motion.div 
+                  animate={{ y: [0, -15, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-48 h-48 rounded-[3rem] bg-white p-3 shadow-2xl shadow-cyan-500/30 border border-slate-100 overflow-hidden relative group"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <img 
+                    src="https://i.imgur.com/m1YFCzN.jpeg" 
+                    alt="GmaX Core" 
+                    className="w-full h-full object-cover rounded-[2.5rem] shadow-inner"
+                    referrerPolicy="no-referrer"
+                  />
+                </motion.div>
+              </div>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-cyan-600 text-[10px] font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
                 <Sparkles className="w-3 h-3 fill-current" />
                 {t.hero.tag}
@@ -537,11 +586,6 @@ export default function App() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
-                <div className="flex items-center gap-4 text-slate-400 text-xs font-mono">
-                  <span className="flex items-center gap-1"><Terminal className="w-3 h-3" /> npm i @gmax/core</span>
-                  <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
-                  <span>{t.hero.version}</span>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -552,93 +596,307 @@ export default function App() {
             transition={{ duration: 1, delay: 0.2 }}
             className="mt-24 relative max-w-5xl mx-auto"
           >
-            <div className="glass-card rounded-[2.5rem] p-4 lg:p-8 shadow-2xl shadow-cyan-500/5 relative overflow-hidden border-white">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-20"></div>
+            <div className="relative max-w-6xl mx-auto">
+              {/* Ambient Glow behind the interface */}
+              <div className="absolute -inset-10 bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none"></div>
               
-              <div className="grid lg:grid-cols-12 gap-8">
-                {/* Technical Dashboard Mock */}
-                <div className="lg:col-span-8 bg-white rounded-3xl border border-slate-200/60 p-6 shadow-inner">
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="flex items-center gap-4">
-                      <div className="flex gap-1.5">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-400/30"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/30"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-green-400/30"></div>
+              <div className="relative overflow-visible">
+                {/* Futuristic Frame Elements */}
+                <div className="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-cyan-500/30 rounded-tl-3xl z-30"></div>
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-cyan-500/30 rounded-br-3xl z-30"></div>
+                
+                <div className="grid lg:grid-cols-12 gap-8 relative z-20">
+                  {/* Gubi Hologram Interface */}
+                  <div className="lg:col-span-12">
+                    <div className="relative w-full aspect-[21/9] flex items-center justify-center overflow-hidden rounded-[4rem] bg-slate-950 border-x-8 border-slate-900 shadow-[0_0_150px_rgba(6,182,212,0.2)] group">
+                      {/* Background Grid & Neural Network Effect */}
+                      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #22d3ee 1px, transparent 0)', backgroundSize: '30px 30px' }}></div>
+                      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
+                      
+                      {/* GUBI Watermark */}
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+                        <span className="text-[20vw] font-black text-white/[0.02] tracking-tighter uppercase select-none">GUBI</span>
                       </div>
-                      <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">System Monitor / Glucose_Stream</span>
-                    </div>
-                    <div className="px-2 py-0.5 rounded bg-cyan-50 text-cyan-600 text-[9px] font-mono border border-cyan-100">{t.stats.live}</div>
-                  </div>
-                  
-                  <div className="grid grid-cols-3 gap-6 mb-8">
-                    {[
-                      { label: t.stats.glucose, value: "112", unit: "mg/dL", trend: "+2%" },
-                      { label: t.stats.insulin, value: "2.4", unit: "Units", trend: "-0.1" },
-                      { label: t.stats.metabolic, value: "94", unit: "%", trend: t.stats.optimal }
-                    ].map((stat, i) => (
-                      <div key={i} className="space-y-1">
-                        <p className="text-[9px] font-mono text-slate-400 uppercase tracking-wider">{stat.label}</p>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-3xl font-bold text-slate-900">{stat.value}</span>
-                          <span className="text-[10px] text-slate-400 font-mono">{stat.unit}</span>
-                        </div>
-                        <p className="text-[9px] text-cyan-600 font-mono">{stat.trend}</p>
-                      </div>
-                    ))}
-                  </div>
+                      
+                      {/* Scanning Laser Beam */}
+                      <motion.div 
+                        animate={{ left: ["-10%", "110%"] }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-0 bottom-0 w-[100px] bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent skew-x-12 z-10"
+                      ></motion.div>
 
-                  <div className="h-48 w-full bg-slate-50 rounded-xl border border-slate-100 p-4 relative overflow-hidden">
-                    <div className="absolute inset-0 grid grid-cols-12 gap-0 opacity-20">
-                      {Array.from({ length: 12 }).map((_, i) => (
-                        <div key={i} className="border-r border-slate-200 h-full"></div>
-                      ))}
-                    </div>
-                    <div className="relative h-full flex items-end gap-1">
-                      {Array.from({ length: 40 }).map((_, i) => (
+                      {/* Hologram Base & Projection Light */}
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[150px] bg-gradient-to-t from-cyan-500/20 to-transparent blur-[40px]"></div>
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[400px] h-[4px] bg-cyan-400 shadow-[0_0_30px_#22d3ee] rounded-full z-20"></div>
+                      
+                      {/* Rotating HUD Elements */}
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <motion.div 
-                          key={i}
-                          initial={{ height: 0 }}
-                          animate={{ height: `${Math.random() * 60 + 20}%` }}
-                          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", delay: i * 0.05 }}
-                          className="w-full bg-gradient-to-t from-cyan-100 to-cyan-500 rounded-t-sm"
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                          className="absolute w-[800px] h-[800px] border border-cyan-500/5 rounded-full"
+                        >
+                          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-cyan-500/40 rounded-full"></div>
+                        </motion.div>
+                        <motion.div 
+                          animate={{ rotate: -360 }}
+                          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                          className="absolute w-[600px] h-[600px] border border-blue-500/5 rounded-full border-dashed"
                         ></motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                      </div>
 
-                {/* Sidebar Mock */}
-                <div className="lg:col-span-4 space-y-6">
-                  <div className="bg-white rounded-2xl border border-slate-200/60 p-5 shadow-sm min-h-[200px] relative">
-                    <div className="absolute -top-12 -right-4 z-20">
-                      <div className="speech-bubble">
-                        <div className="speech-bubble-inner font-black text-[10px] text-slate-900 uppercase italic">
-                          SİSTEMLER <br /> NOMİNAL!
+                      {/* Central Gubi AI Entity */}
+                      <div className="relative z-30 flex flex-col items-center">
+                        <motion.div 
+                          animate={{ 
+                            y: [0, -25, 0],
+                            scale: [1, 1.05, 1],
+                          }}
+                          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                          className="relative"
+                        >
+                          {/* Outer Energy Rings */}
+                          <motion.div 
+                            animate={{ rotate: 360, scale: [1, 1.1, 1] }}
+                            transition={{ rotate: { duration: 10, repeat: Infinity, ease: "linear" }, scale: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}
+                            className="absolute -inset-12 border-2 border-cyan-400/20 rounded-full border-t-transparent border-b-transparent"
+                          ></motion.div>
+                          <motion.div 
+                            animate={{ rotate: -360, scale: [1, 1.2, 1] }}
+                            transition={{ rotate: { duration: 15, repeat: Infinity, ease: "linear" }, scale: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
+                            className="absolute -inset-20 border border-blue-400/10 rounded-full border-l-transparent border-r-transparent"
+                          ></motion.div>
+
+                          {/* Floating Gubi Companion Orb */}
+                          <motion.div 
+                            animate={{ 
+                              rotate: 360,
+                              x: [180, 200, 180],
+                              y: [-50, -70, -50]
+                            }}
+                            transition={{ 
+                              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                              x: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                              y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                            }}
+                            className="absolute z-40"
+                          >
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 shadow-[0_0_20px_#22d3ee] flex items-center justify-center p-1">
+                              <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
+                                <span className="text-[10px] font-black text-cyan-400">G</span>
+                              </div>
+                            </div>
+                          </motion.div>
+
+                          {/* The Gubi Core */}
+                          <div className="relative w-72 h-72 rounded-full p-1 bg-gradient-to-tr from-cyan-500 to-blue-500 shadow-[0_0_60px_rgba(6,182,212,0.5)]">
+                            <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 relative">
+                              <img 
+                                src="https://i.imgur.com/VXJPAMV.jpeg" 
+                                alt="Gubi AI Entity" 
+                                className="w-full h-full object-cover mix-blend-screen opacity-90 scale-110" 
+                                referrerPolicy="no-referrer" 
+                              />
+                              {/* Glitch & Hologram Overlay */}
+                              <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.03),rgba(0,255,0,0.01),rgba(0,0,255,0.03))] bg-[length:100%_4px,4px_100%]"></div>
+                              <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/30 via-transparent to-transparent"></div>
+                            </div>
+                          </div>
+
+                          {/* Floating Status Tags around Core */}
+                          <motion.div 
+                            animate={{ x: [0, 10, 0], y: [0, -10, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -top-10 -right-20 bg-cyan-500/10 backdrop-blur-md border border-cyan-500/30 px-3 py-1 rounded-full flex items-center gap-2"
+                          >
+                            <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></div>
+                            <span className="text-[9px] font-black text-cyan-400 uppercase tracking-widest">Neural_Link: Stable</span>
+                          </motion.div>
+                        </motion.div>
+
+                        
+                        <div className="mt-12 text-center relative">
+                          <motion.div 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="space-y-2"
+                          >
+                            <h3 className="text-5xl font-black text-white tracking-tighter italic flex items-center justify-center gap-4">
+                              <span className="text-cyan-500">GUBI</span>
+                              <span className="text-slate-400 opacity-50">/</span>
+                              <span>AI CORE</span>
+                            </h3>
+                            <div className="flex items-center justify-center gap-6">
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.2em]">System_Online</span>
+                              </div>
+                              <div className="w-px h-3 bg-slate-800"></div>
+                              <div className="flex items-center gap-2">
+                                <span className="text-[10px] font-mono text-cyan-500 uppercase tracking-[0.2em]">Latency: 14ms</span>
+                              </div>
+                            </div>
+                          </motion.div>
                         </div>
                       </div>
-                    </div>
-                    <p className="text-[10px] font-mono text-slate-400 uppercase mb-4 tracking-widest">Gubi_AI_Logs</p>
-                    <div className="space-y-3 font-mono text-[10px]">
-                      <AnimatePresence mode="popLayout">
-                        {aiLogs.map((log, idx) => (
-                          <motion.div 
-                            key={log + idx}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 10 }}
-                            className={`${log.startsWith('"') ? 'text-slate-600' : 'text-cyan-600/80'}`}
-                          >
-                            {log}
-                          </motion.div>
-                        ))}
-                      </AnimatePresence>
-                      <div className="text-slate-400 italic animate-pulse">Waiting for input_stream...</div>
+
+                      {/* Left Side: Real-time Analytics */}
+                      <div className="absolute left-10 top-1/2 -translate-y-1/2 space-y-8 hidden xl:block">
+                        <div className="space-y-2">
+                          <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Biometric_Data</p>
+                          <div className="w-48 h-24 bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-xl p-3 relative overflow-hidden">
+                            <div className="flex items-end gap-1 h-full">
+                              {[40, 70, 45, 90, 65, 80, 50, 85, 60, 95].map((h, i) => (
+                                <motion.div 
+                                  key={i}
+                                  animate={{ height: [`${h}%`, `${h-20}%`, `${h}%`] }}
+                                  transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
+                                  className="flex-1 bg-cyan-500/40 rounded-t-sm"
+                                ></motion.div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Neural_Activity</p>
+                          <div className="flex items-center gap-3">
+                            <div className="w-12 h-12 rounded-full border-2 border-cyan-500/20 flex items-center justify-center relative">
+                              <motion.div 
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                className="absolute inset-0 border-t-2 border-cyan-500 rounded-full"
+                              ></motion.div>
+                              <span className="text-[10px] font-bold text-cyan-400">88%</span>
+                            </div>
+                            <div>
+                              <p className="text-[10px] font-bold text-white">SYNC_LEVEL</p>
+                              <p className="text-[9px] text-slate-500">Optimizing...</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Right Side: Quick Action Terminals */}
+                      <div className="absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-40">
+                        <motion.button 
+                          whileHover={{ scale: 1.05, x: -10 }}
+                          className="w-64 flex items-center gap-4 bg-slate-900/80 hover:bg-cyan-500/10 backdrop-blur-xl border border-slate-800 hover:border-cyan-500/50 p-5 rounded-3xl transition-all group"
+                        >
+                          <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
+                            <Utensils className="w-7 h-7 text-cyan-400 group-hover:text-white" />
+                          </div>
+                          <div className="text-left">
+                            <p className="text-[10px] font-bold text-cyan-400/60 uppercase tracking-widest">Beslenme</p>
+                            <p className="text-[14px] font-black text-white uppercase italic tracking-tighter">AI Analizi</p>
+                          </div>
+                        </motion.button>
+                        
+                        <motion.button 
+                          whileHover={{ scale: 1.05, x: -10 }}
+                          className="w-64 flex items-center gap-4 bg-slate-900/80 hover:bg-blue-500/10 backdrop-blur-xl border border-slate-800 hover:border-blue-500/50 p-5 rounded-3xl transition-all group"
+                        >
+                          <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500 transition-colors">
+                            <Activity className="w-7 h-7 text-blue-400 group-hover:text-white" />
+                          </div>
+                          <div className="text-left">
+                            <p className="text-[10px] font-bold text-blue-400/60 uppercase tracking-widest">Aktivite</p>
+                            <p className="text-[14px] font-black text-white uppercase italic tracking-tighter">AI Optimizasyon</p>
+                          </div>
+                        </motion.button>
+                      </div>
+
+                      {/* Bottom: Console Stream */}
+                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[600px] hidden lg:block">
+                        <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 p-4 rounded-2xl flex items-center gap-6">
+                          <div className="flex items-center gap-2 text-cyan-500">
+                            <Terminal className="w-4 h-4" />
+                            <span className="text-[10px] font-black uppercase tracking-widest">Live_Feed</span>
+                          </div>
+                          <div className="h-4 w-px bg-slate-800"></div>
+                          <div className="flex-1 overflow-hidden h-5 relative">
+                            <AnimatePresence mode="wait">
+                              <motion.p 
+                                key={aiLogs[0]}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                className="text-[10px] font-mono text-slate-400 truncate"
+                              >
+                                {aiLogs[0]}
+                              </motion.p>
+                            </AnimatePresence>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
           </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section (Teknoloji) */}
+      <section id="teknoloji" className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
+              {t.features.title} <br />
+              <span className="text-cyan-600 italic">{t.features.subtitle}</span>
+            </h2>
+            <p className="text-slate-500 text-lg font-light leading-relaxed">
+              {t.features.desc}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {features.map((feature, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 hover:border-cyan-200 transition-all group relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-8 opacity-[0.1] group-hover:opacity-[0.2] transition-opacity">
+                  <Fingerprint className="w-32 h-32" />
+                </div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
+                    {feature.icon}
+                  </div>
+                  <span className="text-[10px] font-black text-cyan-600 tracking-[0.3em] uppercase">{feature.tag}</span>
+                </div>
+                <h4 className="text-2xl font-bold text-slate-900 mb-4">{feature.title}</h4>
+                <p className="text-slate-500 leading-relaxed font-light mb-6">{feature.description}</p>
+                <button 
+                  onClick={() => setExpandedFeature(expandedFeature === i ? null : i)}
+                  className="text-xs font-bold text-cyan-600 flex items-center gap-2 group-hover:gap-3 transition-all uppercase tracking-widest"
+                >
+                  {expandedFeature === i ? "Kapat" : "Detayları Gör"}
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                
+                <AnimatePresence>
+                  {expandedFeature === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pt-8 mt-8 border-t border-slate-200 text-sm text-slate-500 leading-relaxed font-light">
+                        {feature.details}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -709,8 +967,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* Architecture Section */}
-      <section className="py-32 bg-white">
+      {/* Architecture Section (Mimari) */}
+      <section id="mimari" className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
@@ -833,12 +1091,17 @@ export default function App() {
               <p className="text-lg max-w-md mb-10 leading-relaxed font-light">
                 {t.footer.desc}
               </p>
-              <div className="flex gap-6">
-                {[Share2, Heart, Users, Globe].map((Icon, i) => (
-                  <a key={i} href="#" className="text-slate-400 hover:text-cyan-600 transition-colors">
-                    <Icon className="w-5 h-5" />
+              <div className="flex flex-col gap-6">
+                <div className="flex gap-6">
+                  <a href="https://www.instagram.com/_g.max/?utm_source=qr&r=nametag" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-600 transition-colors flex items-center gap-2 text-sm">
+                    <Instagram className="w-5 h-5" />
+                    <span>Instagram</span>
                   </a>
-                ))}
+                  <a href="mailto:info@gmax.tr" className="text-slate-400 hover:text-cyan-600 transition-colors flex items-center gap-2 text-sm">
+                    <Mail className="w-5 h-5" />
+                    <span>info@gmax.tr</span>
+                  </a>
+                </div>
               </div>
             </div>
             <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-12">
@@ -1006,10 +1269,27 @@ export default function App() {
                   </div>
 
                   <form 
-                    onSubmit={(e) => {
+                    onSubmit={async (e) => {
                       e.preventDefault();
-                      toast.success(t.modal.success);
-                      setIsModalOpen(false);
+                      const formData = new FormData(e.currentTarget);
+                      const email = formData.get("email");
+                      
+                      try {
+                        const response = await fetch("/api/waitlist", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ email }),
+                        });
+                        
+                        if (response.ok) {
+                          toast.success(t.modal.success);
+                          setIsModalOpen(false);
+                        } else {
+                          toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
+                        }
+                      } catch (error) {
+                        toast.error("Bağlantı hatası. Lütfen tekrar deneyin.");
+                      }
                     }}
                     className="space-y-4"
                   >
@@ -1019,6 +1299,7 @@ export default function App() {
                       </label>
                       <input 
                         required
+                        name="email"
                         type="email" 
                         placeholder="name@company.com"
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 transition-all"
