@@ -1275,7 +1275,7 @@ export default function App() {
                       const email = formData.get("email");
                       
                       try {
-                        const response = await fetch("/api/waitlist", {
+                        const response = await fetch("/api/bekleme-listesi", {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
                           body: JSON.stringify({ email }),
